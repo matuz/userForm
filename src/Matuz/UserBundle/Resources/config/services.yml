@@ -1,0 +1,24 @@
+parameters:
+    matuz.user.form.type.user.class: Matuz\UserBundle\Form\Type\UserType
+    matuz.user.form.handler.user.class: Matuz\UserBundle\Form\Handler\UserHandler
+
+services:
+
+    matuz.user.form.type.user:
+        class:       %matuz.user.form.type.user.class%
+        tags:
+            - {name: form.type, alias: user_type }
+
+    matuz.user.form.user:
+        class:           Symfony\Component\Form\Form
+        factory_method:  createNamed
+        factory_service: form.factory
+        arguments:       ["user_form", "user_type", null]
+
+    matuz.user.form.handler.user:
+        class:           %matuz.user.form.handler.user.class%
+        scope:           request
+        arguments:
+            - @matuz.user.form.user
+            - @request
+            - "%kernel.root_dir%/../uploads"

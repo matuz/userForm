@@ -1,0 +1,3 @@
+matuz_user_bundle:
+    resource: "@MatuzUserBundle/Controller/UserController.php"
+    type: annotation

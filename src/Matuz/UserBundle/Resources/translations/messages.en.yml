@@ -1,0 +1,10 @@
+matuz:
+    user:
+        name:
+            field_label: 'Name'
+        email:
+            field_label: 'Email'
+        picture:
+            field_label: 'Picture'
+
+        entity_saved_message : 'Congratulations, you did it!'
